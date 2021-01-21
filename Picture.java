@@ -367,23 +367,56 @@ public class Picture
   }
 
    ////////////////////// methods ///////////////////////////////////////
-  //precondition: amount is between 0 and 1
-public void decreaseBlue(double amount)
-   {
-   //create a pixel array
-   Pixel[]pixelArray=this.getPixels();
-   //create a pixel object
-   Pixel p  = null;
-   //loop through all of the pixels
-   for(int x=0;x<pixelArray.length;x++)
-   {
-   //get the current pixel
-   p =pixelArray[x];
-    //decrease the blue value
-    p.setBlue((int)(p.getBlue()*amount));
-   }
-   }
-   
 
+
+//Unit 6 Lab 1
+//By Johnathan Mitri
+/**
+    * Method to reduce the red, green, and blue values in an image
+    * Precondition: each paramater must be between 0 and 1
+    */
+  public void reduceRGB(double redAmount, double greenAmount, double blueAmount)
+  {
+    //create a pixel array
+    Pixel[] pixelArray=this.getPixels();
+
+    //loop through all of the pixels
+    for (Pixel p: pixelArray)
+    {
+      //decrease the red value
+      p.setRed((int)(p.getRed()*redAmount));
+
+      //decrease the green value
+      p.setGreen((int)(p.getGreen()*greenAmount));
+
+      //decrease the blue value
+      p.setBlue((int)(p.getBlue()*blueAmount));
+    }
+  }
+    
+
+//Unit 6 Lab 2
+//By Johnathan Mitri
+  public void negativePicture()
+  {
+  //create a pixel array
+  Pixel[] pixelArray = this.getPixels();
+
+  //loop through all of the pixels
+  for (Pixel p: pixelArray)
+  {
+    //invert the value of each color
+    p.setBlue(255-p.getBlue());
+    p.setGreen(255-p.getGreen());
+    p.setRed(255-p.getRed());
+  }
+}
+  
+
+/*
+The copper-puzzle.png image is a puzzle -- it shows something famous, however the image has been distored. The true image is in the blue and green values, however all the blue and green values have all be divided by 20, so the values are very small. The red values are all just random numbers, noise added on top to obscure things. Undo these distortions to reveal the true image.
+
+First, set the red values to 0 to get that of the way. You may be able to see the image very faintly at this point, but it is very dark. Then multiply the blue and green values by 20 to get them back approximately to their proper values. What is the famous object?
+*/
 
 } // this } is the end of class Picture, put all new methods before this
